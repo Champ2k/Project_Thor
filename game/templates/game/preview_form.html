@@ -1,0 +1,24 @@
+{% extends "game/base.html" %}
+{% block content %}
+{% load static boxed_answer %}
+
+ <link rel = "stylesheet" type = "text/css" href="{% static 'game/preview_form_style.css' %}">
+
+<h1 class="mt-5 pt-5 head">Preview Form</h1>
+<div class="main_focus container">
+    <h4 id="pre-topic">Topic: {{question.topic}}</h4>
+    <h4 id="pre-diff"> Difficulty: {{question.difficulty|title}}</h4>
+    <h3 id="pre-question" class="title">{{question.question_title}}</h3>
+    <br>
+    <p id="pre-question-box" class="q_text">{{question.question_text|boxed}}</p>
+</div>
+
+<div class="button-group">
+    <a id="edit-form" class="button" href="{% url 'game:edit' question.id %}">Back to Edit Form</a>
+    <a id="save-and-create" class="button" href="{% url 'game:form' %}">Save and Create Another</a>
+    <a id="save-question" class="button" href="{% url 'game:home' %}">Save</a>
+    <a id="discard-form" class="button" href="{% url 'game:discard' question.id %}">Discard</a>
+
+</div>
+
+{% endblock %}
